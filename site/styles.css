@@ -1,0 +1,89 @@
+/* Olga's Wood - simple, clean, accessible styles */
+:root {
+  --bg: #f7faf8;
+  --surface: #ffffff;
+  --text: #192723;
+  --muted: #63756b;
+  --brand: #27c59a;
+  --brand-dark: #1aa67a;
+  --border: #dbe5df;
+  --maxw: 1100px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+img { max-width: 100%; display: block; border-radius: 10px; }
+a { color: var(--text); text-decoration: none; }
+.container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+.site-header { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,0.9); backdrop-filter: blur(6px); border-bottom: 1px solid var(--border); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.logo { font-weight: 700; letter-spacing: 0.2px; }
+.nav { display: flex; gap: 18px; align-items: center; }
+.nav a { opacity: 0.9; }
+
+.btn { display: inline-block; padding: 10px 16px; border-radius: 8px; border: 1px solid var(--border); background: #fff; color: var(--text); }
+.btn.small { padding: 8px 12px; font-size: 14px; }
+.btn.primary { background: var(--brand); color: #fff; font-weight: 700; border: none; }
+.btn.primary:hover { background: var(--brand-dark); }
+.btn.secondary { border-color: var(--brand); color: var(--brand); background: transparent; }
+.btn.secondary:hover { background: rgba(47,211,157,0.1); }
+/* Header Champions button */
+.nav .btn.champions { background: var(--brand-dark); color: #fff; border-color: var(--brand-dark); }
+.nav .btn.champions:hover { background: #178b67; }
+
+/* Hero */
+.hero { position: relative; min-height: 64vh; display: grid; align-items: center; background-image: var(--hero-img); background-size: cover; background-position: center; color: #fff; }
+.hero .overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.65), rgba(0,0,0,0.45)); }
+.hero-content { position: relative; padding: 80px 20px; }
+.hero h1 { font-size: clamp(28px, 6vw, 48px); max-width: 20ch; text-shadow: 0 2px 10px rgba(0,0,0,0.35), 0 1px 2px rgba(0,0,0,0.25); }
+.hero p { color: var(--muted); max-width: 44ch; text-shadow: 0 1px 6px rgba(0,0,0,0.3); }
+.hero-actions { display: flex; gap: 12px; margin-top: 16px; }
+
+/* Sections */
+.section { padding: 72px 0; }
+.section.alt { background: var(--surface); }
+.section-header { margin-bottom: 24px; }
+.section-header h2 { margin: 0 0 6px; }
+.prose { color: var(--muted); line-height: 1.7; }
+.split { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 32px; align-items: center; }
+.split.reverse { grid-template-columns: 0.9fr 1.1fr; }
+.image-wrap { overflow: hidden; }
+
+/* Gallery */
+.gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.gallery img { height: 180px; object-fit: cover; }
+
+/* Cards */
+.visit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+.card h3 { margin-top: 0; }
+
+/* Lists */
+.list { color: var(--muted); padding-left: 18px; }
+.list li { margin: 8px 0; }
+
+/* Footer */
+.site-footer { border-top: 1px solid var(--border); background: #f2f7f4; }
+.footer-inner { display: flex; justify-content: space-between; gap: 16px; padding: 24px 20px; }
+
+/* Champions section */
+.champions { border-top: 1px solid #20262d; }
+
+/* Supporters page */
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.supporter { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.supporter .info { padding: 14px; }
+.supporter .role { color: var(--brand); font-weight: 600; }
+
+/* Responsive */
+@media (max-width: 960px) {
+  .split, .split.reverse { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: repeat(2, 1fr); }
+  .visit-grid, .grid { grid-template-columns: 1fr 1fr; }
+  .footer-inner { flex-direction: column; }
+}
+@media (max-width: 560px) {
+  .visit-grid, .grid, .gallery { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; }
+}

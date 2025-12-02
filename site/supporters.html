@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Champions of Olga’s Wood</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- stylesheet path -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <!-- header logo link -->
+      <a class="logo" href="index.html">Olga’s Wood</a>
+      <nav class="nav">
+        <a href="index.html#about">About</a>
+        <a href="index.html#why">Why</a>
+        <a href="supporters.html" class="btn small champions">Supporters</a>
+        <!-- nav contact link -->
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h1>Champions of Olga’s Wood</h1>
+        <p>Celebrating those who made it possible.</p>
+      </div>
+      <div id="intro" class="prose"></div>
+      <div class="grid" id="supportersGrid" aria-live="polite"></div>
+      <p style="margin-top:24px"><a class="btn secondary" href="/site/index.html">Back to Home</a></p>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div><strong>Olga’s Wood</strong></div>
+      <div>&copy; <span id="year"></span> Olga’s Wood</div>
+    </div>
+  </footer>
+
+  <script>
+    (async function() {
+      const yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+      // intro copy from shared content
+      try {
+        const c = await fetch('content.json').then(r => r.json());
+        document.getElementById('intro').innerHTML = c.champions_intro;
+      } catch (e) {}
+
+      try {
+        const res = await fetch('supporters.json');
+        const items = await res.json();
+        const grid = document.getElementById('supportersGrid');
+        grid.innerHTML = items.map(s => `
+          <article class="supporter">
+            ${s.image ? `<img src="${s.image}" alt="${s.name}" />` : ''}
+            <div class="info">
+              <div class="role">${s.role || 'Champion'}</div>
+              <h3>${s.name}</h3>
+              <p class="prose">${s.description || ''}</p>
+              ${s.link ? `<p><a class="btn secondary" href="${s.link}" target="_blank" rel="noopener">Learn more</a></p>` : ''}
+            </div>
+          </article>
+        `).join('');
+      } catch (e) {
+        console.warn('Could not load supporters.json', e);
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+[
+  {
+    "name": "Friends of Olga’s Wood",
+    "role": "Community group",
+    "description": "Volunteers who help maintain accessible paths and welcome visitors.",
+    "image": "../wetransfer_olgas-wood-photos_2025-12-01_2020/IMG_0886.jpeg"
+  },
+  {
+    "name": "Local Council",
+    "role": "Partner",
+    "description": "Support with inclusive access, signage, and community outreach.",
+    "image": "../wetransfer_olgas-wood-photos_2025-12-01_2020/IMG_0283.jpeg"
+  },
+  {
+    "name": "Nature Trust",
+    "role": "Funder",
+    "description": "Funding to enhance habitats while preserving accessibility.",
+    "image": "../wetransfer_olgas-wood-photos_2025-12-01_2020/IMG_0576.jpeg",
+    "link": "#"
+  }
+]

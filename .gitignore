@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+# Python http.server artifact
+__pycache__/
+# Logs
+*.log
+# Node/npm (in case tools are added later)
+node_modules/
+# Editor folders
+.vscode/
+.idea/
