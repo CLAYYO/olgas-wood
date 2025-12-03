@@ -41,6 +41,11 @@ a { color: var(--text); text-decoration: none; }
 .hero p { color: var(--muted); max-width: 44ch; text-shadow: 0 1px 6px rgba(0,0,0,0.3); }
 .hero-actions { display: flex; gap: 12px; margin-top: 16px; }
 
+/* Brand mark in hero */
+.hero .brand-mark { width: clamp(96px, 12vw, 140px); margin-bottom: 12px; opacity: 0.95; filter: drop-shadow(0 3px 12px rgba(0,0,0,0.45)); }
+@media (max-width: 560px) {
+  .hero .brand-mark { width: 96px; }
+}
 /* Sections */
 .section { padding: 72px 0; scroll-margin-top: 80px; }
 .section.alt { background: var(--surface); }
