@@ -1,0 +1,5 @@
+# Exclude non-site content from Cloudflare Pages deploy
+.git/
+*.zip
+wetransfer_olgas-wood-photos_2025-12-01_2020/
+wetransfer_olgas-wood-photos_2025-12-01_2020 2/
