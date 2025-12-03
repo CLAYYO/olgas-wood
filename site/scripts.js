@@ -21,3 +21,37 @@
     console.warn('Could not load content.json', e);
   }
 })();
+
+// Subtle reveal-on-scroll animations
+(function() {
+  const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return;
+
+  let observer;
+  function initObserver() {
+    if (observer) return observer;
+    observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    return observer;
+  }
+
+  function observeAllReveals() {
+    const obs = initObserver();
+    document.querySelectorAll('.reveal:not(.in-view)').forEach(el => obs.observe(el));
+  }
+
+  // expose for dynamic content pages
+  window.observeReveals = observeAllReveals;
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', observeAllReveals);
+  } else {
+    observeAllReveals();
+  }
+})();

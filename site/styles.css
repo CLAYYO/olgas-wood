@@ -10,6 +10,7 @@
   --maxw: 1100px;
 }
 * { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
 img { max-width: 100%; display: block; border-radius: 10px; }
 a { color: var(--text); text-decoration: none; }
@@ -41,7 +42,7 @@ a { color: var(--text); text-decoration: none; }
 .hero-actions { display: flex; gap: 12px; margin-top: 16px; }
 
 /* Sections */
-.section { padding: 72px 0; }
+.section { padding: 72px 0; scroll-margin-top: 80px; }
 .section.alt { background: var(--surface); }
 .section-header { margin-bottom: 24px; }
 .section-header h2 { margin: 0 0 6px; }
@@ -75,6 +76,16 @@ a { color: var(--text); text-decoration: none; }
 .supporter { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
 .supporter .info { padding: 14px; }
 .supporter .role { color: var(--brand); font-weight: 600; }
+
+/* Subtle reveal animations */
+.reveal { opacity: 0; transform: translateY(12px); transition: opacity 500ms ease, transform 500ms ease; will-change: opacity, transform; }
+.reveal.in-view { opacity: 1; transform: none; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
 
 /* Responsive */
 @media (max-width: 960px) {

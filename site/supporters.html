@@ -27,11 +27,11 @@
 
   <section class="section">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal">
         <h1>Champions of Olga’s Wood</h1>
         <p>Celebrating those who made it possible.</p>
       </div>
-      <div id="intro" class="prose"></div>
+      <div id="intro" class="prose reveal"></div>
       <div class="grid" id="supportersGrid" aria-live="polite"></div>
       <p style="margin-top:24px"><a class="btn secondary" href="/site/index.html">Back to Home</a></p>
     </div>
@@ -44,6 +44,7 @@
     </div>
   </footer>
 
+  <script src="scripts.js"></script>
   <script>
     (async function() {
       const yearEl = document.getElementById('year');
@@ -59,7 +60,7 @@
         const items = await res.json();
         const grid = document.getElementById('supportersGrid');
         grid.innerHTML = items.map(s => `
-          <article class="supporter">
+          <article class="supporter reveal">
             ${s.image ? `<img src="${s.image}" alt="${s.name}" />` : ''}
             <div class="info">
               <div class="role">${s.role || 'Champion'}</div>
@@ -69,6 +70,7 @@
             </div>
           </article>
         `).join('');
+        if (window.observeReveals) window.observeReveals();
       } catch (e) {
         console.warn('Could not load supporters.json', e);
       }
